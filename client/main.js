@@ -86,6 +86,7 @@ Template.addInvoice.events ({
           }
           else
             {
+              console.log('hi');
             }
         });
      },
