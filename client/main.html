@@ -1,3 +1,4 @@
+
 <head>
   <title>ltwa2</title>
 </head>
@@ -28,6 +29,14 @@
       <th> Total</th>
       <th> Description</th>
     </tr>
+    {{#each inv_display}}
+    <tr>
+      <td> {{k_amt}} </td>
+      <td> {{k_dis}} </td>
+      <td> {{k_tot}} </td>
+      <td> {{k_des}} </td>
+    </tr>
+    {{/each}}
   </table>
 </div>
 

@@ -4,6 +4,7 @@ import { $ } from 'meteor/jquery';
 import { gL } from './globalFunction.js';
 import { Mongo } from 'meteor/mongo';
 import './main.html';
+import { inv_coll } from '../imports/collections/collections.js';
 // import '../methods.js';
 // import './methods.js';
 
@@ -29,11 +30,14 @@ import './main.html';
 
 
 Template.addInvoice.onCreated (function(){
+  this.autorun(()=>{this.subscribe('inv_doc')});
   this.rv_amt = new ReactiveVar(0);
   this.rv_dis = new ReactiveVar(0);
   this.rv_tot = new ReactiveVar(0);
   this.rv_des = new ReactiveVar(0);
 });
+
+
 
 Template.addInvoice.helpers ({
  // Template.currentData()
@@ -74,7 +78,7 @@ Template.addInvoice.events ({
           k_tot:instance.rv_tot.get(),
           k_des:instance.rv_des.get()
         }
-        console.log(x);
+        // console.log(x);
         Meteor.call('saveInvoice',x,function(error) {
           if(error)
             {
@@ -85,4 +89,14 @@ Template.addInvoice.events ({
             }
         });
      },
+});
+
+Template.viewInvoice.onCreated (function(){
+  this.autorun(()=>{this.subscribe('inv_doc')});
+});
+
+Template.viewInvoice.helpers({
+  inv_display(){
+    return inv_coll.find({},{fields:{k_amt:1,k_dis:1,k_tot:1,k_des:1}})
+  }
 });
