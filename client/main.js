@@ -34,7 +34,7 @@ Template.addInvoice.onCreated (function(){
   this.rv_amt = new ReactiveVar(0);
   this.rv_dis = new ReactiveVar(0);
   this.rv_tot = new ReactiveVar(0);
-  this.rv_des = new ReactiveVar(0);
+  // this.rv_des = new ReactiveVar(0); // try this without reactive var //
 });
 
 
@@ -67,16 +67,17 @@ Template.addInvoice.events ({
          let d = gL.percentLogic(instance.rv_amt.get(), instance.rv_dis.get());
          instance.rv_tot.set(d);
         },
-      'keyup #des '(event, instance) {
-         instance.rv_des.set(event.target.value);
-           },
+      // 'keyup #des '(event, instance) {
+      //    instance.rv_des.set(event.target.value);
+      //      }, // there is no need to set if reactive var is not used 
 
      'click #sub '(event, instance) {
+       console.log(Template.instance().find('#des').value);
         let x = {
           k_amt:instance.rv_amt.get(),
           k_dis:instance.rv_dis.get(),
           k_tot:instance.rv_tot.get(),
-          k_des:instance.rv_des.get()
+          k_des:Template.instance().find('#des').value // getting value without reactive var //
         }
         // console.log(x);
         Meteor.call('saveInvoice',x,function(error) {
