@@ -69,14 +69,30 @@ Template.addInvoice.events ({
         },
       // 'keyup #des '(event, instance) {
       //    instance.rv_des.set(event.target.value);
-      //      }, // there is no need to set if reactive var is not used 
+      //      }, // there is no need to set if reactive var is not used
 
      'click #sub '(event, instance) {
-       console.log(Template.instance().find('#des').value);
+       console.log(Template.instance().$('#des').val()); // jquery to line 80
+       let flag = 0;
+      if (Template.instance().$('#amt').val() == "") { flag = 1;
+          Template.instance().$('#amt').css('border', "1px solid #ff0000")}
+          else {Template.instance().$('#amt').css('border', "1px solid #000000")}
+      if (Template.instance().$('#dis').val() == "") { flag = 1;
+          Template.instance().$('#dis').css('border', "1px solid #ff0000")}
+          else {Template.instance().$('#dis').css('border', "1px solid #000000")}
+      if (Template.instance().$('#tot').val() == "") { flag = 1;
+          Template.instance().$('#tot').css('border', "1px solid #ff0000")}
+          else {Template.instance().$('#tot').css('border', "1px solid #000000")}
+      if (Template.instance().$('#des').val() == "") { flag = 1;
+          Template.instance().$('#des').css('border', "1px solid #ff0000")}
+          else {Template.instance().$('#des').css('border', "1px solid #000000")}
+
+
+      if (flag == 0) {
         let x = {
-          k_amt:instance.rv_amt.get(),
-          k_dis:instance.rv_dis.get(),
-          k_tot:instance.rv_tot.get(),
+          k_amt:gL.string2Number(instance.rv_amt.get()),
+          k_dis:gL.string2Number(instance.rv_dis.get()),
+          k_tot:gL.string2Number(instance.rv_tot.get()),
           k_des:Template.instance().find('#des').value // getting value without reactive var //
         }
         // console.log(x);
@@ -89,6 +105,8 @@ Template.addInvoice.events ({
             {
             }
         });
+      }
+
      },
 });
 
@@ -99,5 +117,24 @@ Template.viewInvoice.onCreated (function(){
 Template.viewInvoice.helpers({
   inv_display(){
     return inv_coll.find({},{fields:{k_amt:1,k_dis:1,k_tot:1,k_des:1}})
+  }
+});
+
+
+Template.viewInvoice.events ({
+  'click #del'(event, instance) {
+    console.log(this)
+    let a = this._id;
+    Meteor.call('delInvoice',a,function(error) {
+      if(error)
+        {
+      console.log(error);
+      }
+      else
+        {
+          console.log(a);
+        $('#alertMsg').html(a +   "  is deleted successfully")
+        }
+    })
   }
 });

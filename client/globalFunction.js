@@ -4,5 +4,10 @@ export const gL = {
     let b = amount-a;
     return b;
   },
-  
+
+  string2Number: function (val){
+    return val * 1;
+  },
+
+
 };
