@@ -6,9 +6,21 @@
 <body>
   <h1>Invoice Application</h1>
 
-  {{> addInvoice}}
-  {{> viewInvoice}}
+<div>
+<a> View Invoice</a>
+<a> Add Invoice</a>
+</div>
+
+  <!-- {{> addInvoice}}
+  {{> viewInvoice}} -->
+
+  <template name="invMain">
+  {{> Template.dynamic template=add}}
+  {{> Template.dynamic template=view}}
+  </template>
+
 </body>
+
 
 <template name="addInvoice">
   <div>
@@ -22,19 +34,22 @@
 
 <template name="viewInvoice">
   <div>
+<p id ="alertMsg">  </p>
   <table>
     <tr>
       <th> Amount</th>
       <th> Discount</th>
       <th> Total</th>
       <th> Description</th>
+      <th> Options</th>
     </tr>
     {{#each inv_display}}
     <tr>
       <td> {{k_amt}} </td>
       <td> {{k_dis}} </td>
       <td> {{k_tot}} </td>
-      <td> {{k_des}} </td>
+      <td> {{{k_des}}} </td>
+      <td> {{ _id}} <button id="del">  Delete </button> </td>
     </tr>
     {{/each}}
   </table>
