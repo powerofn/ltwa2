@@ -6,9 +6,21 @@
 <body>
   <h1>Invoice Application</h1>
 
-  {{> addInvoice}}
-  {{> viewInvoice}}
+<div>
+<a> View Invoice</a>
+<a> Add Invoice</a>
+</div>
+
+  <!-- {{> addInvoice}}
+  {{> viewInvoice}} -->
+
+  <template name="invMain">
+  {{> Template.dynamic template=add}}
+  {{> Template.dynamic template=view}}
+  </template>
+
 </body>
+
 
 <template name="addInvoice">
   <div>

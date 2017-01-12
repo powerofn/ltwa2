@@ -5,28 +5,16 @@ import { gL } from './globalFunction.js';
 import { Mongo } from 'meteor/mongo';
 import './main.html';
 import { inv_coll } from '../imports/collections/collections.js';
+import './route.js';
 // import '../methods.js';
 // import './methods.js';
 
 
 
-// Template.hello.onCreated(function helloOnCreated() {
-//   // counter starts at 0
-//   this.counter = new ReactiveVar(0);
+// Template.invMain.onCreated (function(){
+//   this.autorun(()=>{BlazeLayout.render('invMain', { add: "addInvoice", view: "viewInvoice" })})
 // });
-//
-// Template.hello.helpers({
-//   counter() {
-//     return Template.instance().counter.get();
-//   },
-// });
-//
-// Template.hello.events({
-//   'click button'(event, instance) {
-//     // increment the counter when button is clicked
-//     instance.counter.set(instance.counter.get() + 1);
-//   },
-// });
+
 
 
 Template.addInvoice.onCreated (function(){
