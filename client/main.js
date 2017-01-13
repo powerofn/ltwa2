@@ -60,7 +60,7 @@ Template.addInvoice.events ({
       //      }, // there is no need to set if reactive var is not used
 
      'click #sub '(event, instance) {
-       console.log(Template.instance().$('#des').val()); // jquery to line 80
+      console.log(Template.instance().$('#des').val()); // jquery to line 80
        let flag = 0;
       if (Template.instance().$('#amt').val() == "") { flag = 1;
           Template.instance().$('#amt').css('border', "1px solid #ff0000")}
@@ -91,8 +91,14 @@ Template.addInvoice.events ({
           }
           else
             {
+              // console.log (Template.instance().$('#amt').val() + "hi");
+              FlowRouter.go('/viewinvoice');
             }
         });
+        Template.instance().$('#amt').val("");
+        Template.instance().$('#dis').val("");
+        Template.instance().$('#tot').val("");
+        Template.instance().$('#des').val("");
       }
 
      },

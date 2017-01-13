@@ -8,9 +8,30 @@ FlowRouter.notFound = {
 	}
 };
 
-FlowRouter.route('/INV', {
-	name: 'Home',
+// FlowRouter.route('/INV', {
+// 	name: 'Home',
+// 	action() {
+// 		BlazeLayout.render('invMain', { add: "addInvoice", view: "viewInvoice" })
+// 	}
+// });
+
+FlowRouter.route('/addinvoice', {
+	name: 'addinvoice',
 	action() {
-		BlazeLayout.render('invMain', { add: "addInvoice", view: "viewInvoice" })
+		BlazeLayout.render('invMain', { display: "addInvoice" })
+	}
+});
+
+FlowRouter.route('/viewinvoice', {
+	name: 'viewinvoice',
+	action() {
+		BlazeLayout.render('invMain', {  display: "viewInvoice" })
+	}
+});
+
+FlowRouter.route('/', {
+	name: 'viewinvoice',
+	action() {
+		BlazeLayout.render('invMain', {  display: "viewInvoice" })
 	}
 });
