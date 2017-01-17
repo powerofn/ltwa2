@@ -1,6 +1,14 @@
 import { FlowRouter} from 'meteor/kadira:flow-router';
 import { BlazeLayout} from 'meteor/kadira:blaze-layout';
-import './main.html';
+// import './main.html';
+
+//Layout Design//
+import '../../layouts/login/';
+
+//Project Modules//
+import '../../m_login/';
+
+
 
 FlowRouter.notFound = {
 	action() {
