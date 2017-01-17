@@ -25,3 +25,5 @@ kadira:flow-router
 kadira:blaze-layout
 fourseven:scss
 materialize:materialize@=0.97.7
+accounts-password
+accounts-ui
