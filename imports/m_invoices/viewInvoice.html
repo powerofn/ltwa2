@@ -1,0 +1,29 @@
+<template name="viewInvoice">
+  <div>
+<p id ="alertMsg">  </p>
+  <table class="striped">
+    <thead>
+    <tr>
+      <th> Amount</th>
+      <th> Discount</th>
+      <th> Total</th>
+      <th> Description</th>
+      <th> Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each inv_display}}
+    <tr>
+      <td> {{k_amt}} </td>
+      <td> {{k_dis}} </td>
+      <td> {{k_tot}} </td>
+      <td> {{{k_des}}} </td>
+      <td> {{ _id}} <button id="del">  Delete </button> </td>
+    </tr>
+    {{/each}}
+  </tbody>
+  </table>
+</div>
+
+</template>

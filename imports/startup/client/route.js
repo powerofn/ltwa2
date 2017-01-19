@@ -3,10 +3,12 @@ import { BlazeLayout} from 'meteor/kadira:blaze-layout';
 // import './main.html';
 
 //Layout Design//
-import '../../layouts/login/';
+// import '../../layouts/login/';
+import '../../layouts/customer/';
 
 //Project Modules//
-import '../../m_login/';
+// import '../../m_login/';
+import '../../m_invoices/';
 
 
 

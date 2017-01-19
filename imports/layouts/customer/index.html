@@ -1,0 +1,19 @@
+<head>
+  <title>ltwa2</title>
+</head>
+
+<body>
+  <h1>Invoice Application</h1>
+
+<div>
+<a href="/viewinvoice"> View Invoice</a>
+<a href="/addinvoice"> Add Invoice</a>
+</div>
+
+{{> invMain}}
+
+</body>
+
+  <template name="invMain">
+  {{> Template.dynamic template=display}}
+  </template>
